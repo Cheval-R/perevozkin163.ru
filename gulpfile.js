@@ -24,10 +24,6 @@ import cleanCSS from 'gulp-clean-css';
 import gcmq from 'gulp-group-css-media-queries';
 import { stream as critical } from 'critical';
 
-
-import postcss from 'gulp-postcss';
-import postcssUrl from 'postcss-url';
-
 // js
 import terser from 'gulp-terser';
 import webpackStream from 'webpack-stream';
@@ -152,50 +148,40 @@ export const pug = () =>
 // css
 
 export const scss = () =>
-  gulp
-    .src(path.src.scss)
-    .pipe(gulpif(dev, sourcemaps.init()))
-    .pipe(compSass().on('error', compSass.logError))
-    .pipe(
-      gulpif(
-        !dev,
-        autoprefixer({
-          cascade: false,
-          grid: false,
-        }),
-      ),
-    )
-    .pipe(
-      gulpif(
-        !dev,
-        gcmq(),
-      ),
-    )
-    .pipe(
-      postcss([
-        postcssUrl({
-          url: 'rebase', // Этот параметр изменяет пути на относительные
-        }),
-      ]),
-    )
-    .pipe(
-      gulpif(
-        !dev,
-        cleanCSS({
-          2: {
-            specialComments: 0,
-          },
-        }),
-      ),
-    )
-    .pipe(
-      rename({
-        suffix: '.min',
-      }),
-    )
-    .pipe(gulpif(dev, sourcemaps.write()))
-    .pipe(gulp.dest(path.docs.css))
-    .pipe(browserSync.stream());
+	gulp
+		.src(path.src.scss)
+		.pipe(gulpif(dev, sourcemaps.init()))
+		.pipe(compSass().on('error', compSass.logError))
+		.pipe(
+			gulpif(
+				!dev,
+				autoprefixer({
+					cascade: false,
+					grid: false,
+				}),
+			),
+		)
+		.pipe(gulpif(!dev, gcmq()))
+		.pipe(gulpif(!dev, gulp.dest(path.docs.css)))
+		.pipe(
+			gulpif(
+				!dev,
+				cleanCSS({
+					2: {
+						specialComments: 0,
+					},
+				}),
+			),
+		)
+		.pipe(
+			rename({
+				suffix: '.min',
+			}),
+		)
+		.pipe(gulpif(dev, sourcemaps.write()))
+		.pipe(gulp.dest(path.docs.css))
+		.pipe(browserSync.stream());
+
 // js
 
 const webpackConfCritjs = {

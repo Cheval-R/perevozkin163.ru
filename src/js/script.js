@@ -88,7 +88,7 @@ feedbackValidator
 		event.preventDefault();
 
 		$.ajax({
-			url: '/php/feedback-send.php',
+			url: './../php/feedback-send.php',
 
 			type: 'POST',
 
@@ -227,7 +227,7 @@ modalValidator
 		event.preventDefault();
 
 		$.ajax({
-			url: '/php/modal-send.php',
+			url: './../php/modal-send.php',
 
 			type: 'POST',
 
