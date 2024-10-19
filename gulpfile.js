@@ -24,6 +24,10 @@ import cleanCSS from 'gulp-clean-css';
 import gcmq from 'gulp-group-css-media-queries';
 import { stream as critical } from 'critical';
 
+
+import postcss from 'gulp-postcss';
+import postcssUrl from 'postcss-url';
+
 // js
 import terser from 'gulp-terser';
 import webpackStream from 'webpack-stream';
@@ -47,6 +51,7 @@ const path = {
 		cssIndex: 'docs/css/index.min.css',
 		img: 'docs/img/',
 		fonts: 'docs/fonts/',
+		php: 'docs/php/', // Добавляем путь для PHP файлов
 	},
 	src: {
 		base: 'src/',
@@ -56,9 +61,7 @@ const path = {
 		],
 		pug: 'src/pug/*.pug',
 		scss: 'src/scss/**/*.scss',
-		//! Все js файлы через массив
-		critjs: [
-		],
+		critjs: [],
 		js: [
 			'src/libs/jquery-3.7.1.min.js',
 			'src/libs/slick.min.js',
@@ -71,6 +74,7 @@ const path = {
 		img: 'src/img/**/*.*',
 		svg: 'src/svg/**/*.svg',
 		imgF: 'src/img/**/*.{jpg,jpeg,png}',
+		php: 'src/php/**/*.php', // Добавляем путь для исходных PHP файлов
 		assets: [
 			'src/fonts/**/*.*',
 			'src/icons/**/*.*',
@@ -86,8 +90,10 @@ const path = {
 		svg: 'src/svg/**/*.svg',
 		img: 'src/img/**/*.*',
 		imgF: 'src/img/**/*.{jpg,jpeg,png}',
+		php: 'src/php/**/*.php', // Добавляем в отслеживание PHP файлов
 	},
 };
+
 
 //html
 
@@ -105,6 +111,17 @@ export const html = () =>
 		)
 		.pipe(gulp.dest(path.docs.html))
 		.pipe(browserSync.stream());
+
+
+export const php = () =>
+	gulp
+		.src(path.src.php)
+		.pipe(gulp.dest(path.docs.php)) // Копируем PHP файлы в docs/php
+		.pipe(
+			browserSync.stream({
+				once: true,
+			}),
+		);
 
 //pug
 export const pug = () =>
@@ -135,40 +152,51 @@ export const pug = () =>
 // css
 
 export const scss = () =>
-	gulp
-		.src(path.src.scss)
-		.pipe(gulpif(dev, sourcemaps.init()))
-		.pipe(compSass().on('error', compSass.logError))
-		.pipe(
-			gulpif(
-				!dev,
-				autoprefixer({
-					cascade: false,
-					grid: false,
-				}),
-			),
-		)
-		.pipe(gulpif(!dev, gcmq()))
-		.pipe(gulpif(!dev, gulp.dest(path.docs.css)))
-		.pipe(
-			gulpif(
-				!dev,
-				cleanCSS({
-					2: {
-						specialComments: 0,
-					},
-				}),
-			),
-		)
-		.pipe(
-			rename({
-				suffix: '.min',
-			}),
-		)
-		.pipe(gulpif(dev, sourcemaps.write()))
-		.pipe(gulp.dest(path.docs.css))
-		.pipe(browserSync.stream());
-
+  gulp
+    .src(path.src.scss)
+    .pipe(gulpif(dev, sourcemaps.init()))
+    .pipe(compSass().on('error', compSass.logError))
+    .pipe(
+      gulpif(
+        !dev,
+        autoprefixer({
+          cascade: false,
+          grid: false,
+        }),
+      ),
+    )
+    .pipe(
+      gulpif(
+        !dev,
+        gcmq(),
+      ),
+    )
+    .pipe(
+      postcss([
+        postcssUrl({
+          url: 'inline', // или 'rebase', если нужно изменить относительные пути
+          basePath: 'src/img', // Указываем базовую папку с изображениями
+        }),
+      ]),
+    )
+    .pipe(
+      gulpif(
+        !dev,
+        cleanCSS({
+          2: {
+            specialComments: 0,
+          },
+        }),
+      ),
+    )
+    .pipe(
+      rename({
+        suffix: '.min',
+      }),
+    )
+    .pipe(gulpif(dev, sourcemaps.write()))
+    .pipe(gulp.dest(path.docs.css))
+    .pipe(browserSync.stream());
 // js
 
 const webpackConfCritjs = {
@@ -378,7 +406,9 @@ export const server = () => {
 	gulp.watch(path.watch.img, img);
 	gulp.watch(path.watch.imgF, webp);
 	gulp.watch(path.watch.imgF, avif);
+	gulp.watch(path.watch.php, php); // Добавляем вотчинг для PHP
 };
+
 
 export const clear = (done) => {
 	deleteSync([path.docs.base], {
@@ -393,7 +423,9 @@ const develop = (ready) => {
 };
 
 // export const base = gulp.parallel(html, scss, critjs, js, img, svg, webp, avif, copy);
-export const base = gulp.parallel(html, scss, js, img, svg, webp, avif, copy);
+// export const base = gulp.parallel(html, scss, js, img, svg, webp, avif, copy);
+export const base = gulp.parallel(html, scss, js, img, svg, webp, avif, php, copy); // Добавляем php
+
 
 export const build = gulp.series(clear, base, critCSS, server);
 
