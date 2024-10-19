@@ -174,8 +174,7 @@ export const scss = () =>
     .pipe(
       postcss([
         postcssUrl({
-          url: 'inline', // или 'rebase', если нужно изменить относительные пути
-          basePath: 'src/img', // Указываем базовую папку с изображениями
+          url: 'rebase', // Этот параметр изменяет пути на относительные
         }),
       ]),
     )
