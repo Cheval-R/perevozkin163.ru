@@ -1402,15 +1402,15 @@ iframe {
 }
 
 .advantages__card--speed::before {
-  background-image: url(/img/icon/ic-speed.svg);
+  background-image: url("./../img/icon/ic-speed.svg");
 }
 
 .advantages__card--safety::before {
-  background-image: url(/img/icon/ic-shield.svg);
+  background-image: url("./../img/icon/ic-shield.svg");
 }
 
 .advantages__card--comfort::before {
-  background-image: url(/img/icon/ic-comfort.svg);
+  background-image: url("./../img/icon/ic-comfort.svg");
 }
 
 .advantages__name {
@@ -1795,15 +1795,15 @@ iframe {
 }
 
 .schedule__location::before {
-  background-image: url(/img/icon/ic-location.svg);
+  background-image: url("./../img/icon/ic-location.svg");
 }
 
 .schedule__time::before {
-  background-image: url(/img/icon/ic-timer.svg);
+  background-image: url("./../img/icon/ic-timer.svg");
 }
 
 .schedule__timeframe::before {
-  background-image: url(/img/icon/ic-clock.svg);
+  background-image: url("./../img/icon/ic-clock.svg");
 }
 
 .map {
@@ -2063,7 +2063,7 @@ iframe {
   display: block;
   width: 36px;
   height: 36px;
-  background-image: url(/img/icon/ic-arrow.svg);
+  background-image: url("./../img/icon/ic-arrow.svg");
   background-size: contain;
   background-repeat: no-repeat;
   transition: background-image 0.3s ease-in, rotate 0.3s ease-in;
