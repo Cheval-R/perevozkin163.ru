@@ -483,7 +483,7 @@ iframe {
 
 .header {
   color: var(--light);
-  background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("/img/hero/hero-img.avif") type("image/avif") 1x, url("/img/hero/hero-img.webp") type("image/webp") 1x, url("/img/hero/hero-img.jpg") type("image/jpeg") 1x);
+  background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("./../img/hero/hero-img.avif") type("image/avif") 1x, url("./../img/hero/hero-img.webp") type("image/webp") 1x, url("./../img/hero/hero-img.jpg") type("image/jpeg") 1x);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -496,7 +496,7 @@ iframe {
 
 @media (max-width: 1100px) {
   .header {
-    background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("/img/hero/hero-img-1024.avif") type("image/avif") 1x, url("/img/hero/hero-img-1024.webp") type("image/webp") 1x, url("/img/hero/hero-img-1024.jpg") type("image/jpeg") 1x);
+    background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("./../img/hero/hero-img-1024.avif") type("image/avif") 1x, url("./../img/hero/hero-img-1024.webp") type("image/webp") 1x, url("./../img/hero/hero-img-1024.jpg") type("image/jpeg") 1x);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -504,7 +504,7 @@ iframe {
 }
 @media (max-width: 800px) {
   .header {
-    background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("/img/hero/hero-img-1024.avif") type("image/avif") 1x, url("/img/hero/hero-img-1024.webp") type("image/webp") 1x, url("/img/hero/hero-img-1024.jpg") type("image/jpeg") 1x);
+    background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("./../img/hero/hero-img-1024.avif") type("image/avif") 1x, url("./../img/hero/hero-img-1024.webp") type("image/webp") 1x, url("./../img/hero/hero-img-1024.jpg") type("image/jpeg") 1x);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -1058,7 +1058,7 @@ iframe {
 
 .header {
   color: var(--light);
-  background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("/img/hero/hero-img.avif") type("image/avif") 1x, url("/img/hero/hero-img.webp") type("image/webp") 1x, url("/img/hero/hero-img.jpg") type("image/jpeg") 1x);
+  background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("./../img/hero/hero-img.avif") type("image/avif") 1x, url("./../img/hero/hero-img.webp") type("image/webp") 1x, url("./../img/hero/hero-img.jpg") type("image/jpeg") 1x);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1071,7 +1071,7 @@ iframe {
 
 @media (max-width: 1100px) {
   .header {
-    background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("/img/hero/hero-img-1024.avif") type("image/avif") 1x, url("/img/hero/hero-img-1024.webp") type("image/webp") 1x, url("/img/hero/hero-img-1024.jpg") type("image/jpeg") 1x);
+    background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("./../img/hero/hero-img-1024.avif") type("image/avif") 1x, url("./../img/hero/hero-img-1024.webp") type("image/webp") 1x, url("./../img/hero/hero-img-1024.jpg") type("image/jpeg") 1x);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -1079,7 +1079,7 @@ iframe {
 }
 @media (max-width: 800px) {
   .header {
-    background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("/img/hero/hero-img-1024.avif") type("image/avif") 1x, url("/img/hero/hero-img-1024.webp") type("image/webp") 1x, url("/img/hero/hero-img-1024.jpg") type("image/jpeg") 1x);
+    background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("./../img/hero/hero-img-1024.avif") type("image/avif") 1x, url("./../img/hero/hero-img-1024.webp") type("image/webp") 1x, url("./../img/hero/hero-img-1024.jpg") type("image/jpeg") 1x);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -1539,11 +1539,11 @@ iframe {
 }
 
 .transport__conditioner::before {
-  background-image: url("/img/icon/ic-conditioner.svg");
+  background-image: url("./../img/icon/ic-conditioner.svg");
 }
 
 .transport__place::before {
-  background-image: url("/img/icon/ic-person.svg");
+  background-image: url("./../img/icon/ic-person.svg");
 }
 
 @media (max-width: 750px) {
@@ -1636,15 +1636,15 @@ iframe {
 }
 
 .services__card:nth-child(1)::before {
-  background: image-set(url("/img/services/auto.webp") type("image/webp") 1x, url("/img/services/auto.jpg") type("image/jpeg") 1x) bottom/cover no-repeat;
+  background: image-set(url("./../img/services/auto.webp") type("image/webp") 1x, url("./../img/services/auto.jpg") type("image/jpeg") 1x) bottom/cover no-repeat;
 }
 
 .services__card:nth-child(2)::before {
-  background: image-set(url("/img/services/mini.webp") type("image/webp") 1x, url("/img/services/mini.jpg") type("image/jpeg") 1x) bottom/cover no-repeat;
+  background: image-set(url("./../img/services/mini.webp") type("image/webp") 1x, url("./../img/services/mini.jpg") type("image/jpeg") 1x) bottom/cover no-repeat;
 }
 
 .services__card:nth-child(3)::before {
-  background: image-set(url("/img/services/package.webp") type("image/webp") 1x, url("/img/services/package.jpg") type("image/jpeg") 1x) bottom/cover no-repeat;
+  background: image-set(url("./../img/services/package.webp") type("image/webp") 1x, url("./../img/services/package.jpg") type("image/jpeg") 1x) bottom/cover no-repeat;
 }
 
 .services__img {
@@ -1739,7 +1739,7 @@ iframe {
 }
 
 .schedule__card--kazan::before {
-  background: image-set(url("/img/schedule/vkusno.webp") type("image/webp") 1x, url("/img/schedule/vkusno.jpg") type("image/jpeg") 1x) top/cover no-repeat;
+  background: image-set(url("./../img/schedule/vkusno.webp") type("image/webp") 1x, url("./../img/schedule/vkusno.jpg") type("image/jpeg") 1x) top/cover no-repeat;
 }
 
 .map {
@@ -1748,7 +1748,7 @@ iframe {
 }
 
 .schedule__card--samara::before {
-  background: image-set(url("/img/schedule/rostics.webp") type("image/webp") 1x, url("/img/schedule/rostics.jpg") type("image/jpeg") 1x) bottom/cover no-repeat;
+  background: image-set(url("./../img/schedule/rostics.webp") type("image/webp") 1x, url("./../img/schedule/rostics.jpg") type("image/jpeg") 1x) bottom/cover no-repeat;
 }
 
 .schedule__content {
@@ -2113,7 +2113,7 @@ iframe {
   }
 }
 .footer {
-  background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("/img/footer/footer-bg.avif") type("image/avif") 1x, url("/img/footer/footer-bg.webp") type("image/webp") 1x, url("/img/footer/footer-bg.jpg") type("image/jpeg") 1x);
+  background: linear-gradient(0deg, rgba(47, 52, 58, 0.5019607843) 0%, rgba(47, 52, 58, 0.5019607843) 100%), image-set(url("./../img/footer/footer-bg.avif") type("image/avif") 1x, url("./../img/footer/footer-bg.webp") type("image/webp") 1x, url("./../img/footer/footer-bg.jpg") type("image/jpeg") 1x);
   background-position: center;
   background-size: cover;
   color: var(--light);
@@ -2461,7 +2461,7 @@ iframe {
   top: 50%;
   transform: translateY(-50%);
   right: 15px;
-  background-image: url("/img/icon/ic-select-arrow.svg");
+  background-image: url("./../img/icon/ic-select-arrow.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }
