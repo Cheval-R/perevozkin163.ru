@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Комфортные и надежные пассажирские поездки Самара-Казань-Самара. Комфортные и надежные пассажирские поездки Самара-Казань-Самара. Забронируйте билет онлайн за пару минут и наслаждайтесь поездкой без стресса! Современные минивэны, вежливые и опытные водители, удобное расписание и доступные цены. Мы гарантируем безопасность, комфортные условия и своевременные рейсы, чтобы каждая поездка оставляла только положительные впечатления. Путешествуйте с нами легко и без забот! Купить билет Самара - Казань - Самара.">
+	<meta name="robots" content="all">
+	<link rel="icon" href="/img/favicons/favicon.ico">
+	<link rel="apple-touch-icon" href="/img/favicons/apple-touch-icon.png">
+
+	<link href="css/style.min.css" rel="stylesheet">
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const createLink = url => {
+				const link = document.createElement('link')
+				link.rel = 'stylesheet';
+				link.href = url;
+				document.head.append(link);
+			};
+			createLink('css/style.min.css');
+		})
+	</script>
+	<title>Пассажирские перевозки Самара — Казань — Самара. Купить билет. Perevozkin163</title>
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="preload" fetchpriority="high" as="image" href="/img/logo/logo.avif">
+	<link rel="preload" fetchpriority="high" as="image" href="/img/hero/hero-img-1024.avif">
+	<link rel="preload" fetchpriority="high" as="font" href="/fonts/Roboto-400.woff2" type="font/woff2" crossorigin>
+	<link rel="preload" fetchpriority="high" as="font" href="/fonts/Roboto-500.woff2" type="font/woff2" crossorigin>
+	<link rel="preload" fetchpriority="high" as="font" href="/fonts/Roboto-700.woff2" type="font/woff2" crossorigin>
+</head>
+
+<body>
+	<header class="header">
+		<div class="header__content">
+			<div class="container">
+				<div class="header__wrapper">
+					<picture class="header__logo">
+						<source srcset="/img/logo/logo.avif" type="image/avif">
+						<source srcset="/img/logo/logo.webp" type="image/webp">
+						<img src="/img/logo/logo.png" alt="Логотип компании перевозкин, с изображением фургона Mercedes на фоне горного пейзажа с заснеженными вершинами и деревьями" height="90" width="90" loading="lazy">
+					</picture>
+					<nav class="nav" id="burger">
+						<ul class="nav__list" id="burger-menu">
+							<li class="nav__item"><a class="nav__link" href="#about">О нас</a></li>
+							<li class="nav__item"><a class="nav__link" href="#services">Цена</a></li>
+							<li class="nav__item"><a class="nav__link" href="#reviews">Отзывы</a></li>
+							<li class="nav__item"><a class="nav__link" href="#schedule">Рейсы</a></li>
+							<li class="nav__item"><a class="nav__link" href="#faq">FAQ</a></li>
+						</ul>
+					</nav>
+					<div class="socials">
+						<div class="socials__list"><a class="socials__link socials__link--whatsapp" href="https://wa.me/+79277129457?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20" aria-label="Ссылка на Вотсап аккаунт нашего диспетчера"><svg width="25" height="25" viewBox="0 0 129 125" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M83.8297 91.1904C58.5519 91.1904 37.9865 70.612 37.9796 45.3268C37.9865 38.9173 43.204 33.7051 49.5978 33.7051C50.2552 33.7051 50.9056 33.7605 51.5284 33.8713C52.8985 34.0997 54.1994 34.5634 55.3965 35.2625C55.5695 35.3664 55.6871 35.5326 55.7148 35.7264L58.3858 52.5669C58.4204 52.7677 58.3582 52.9615 58.2267 53.1069C56.7528 54.7404 54.8706 55.9172 52.7739 56.5056L51.7637 56.7893L52.1442 57.7652C55.5902 66.542 62.6069 73.5538 71.388 77.0146L72.3637 77.4023L72.6474 76.3918C73.2355 74.2945 74.4119 72.4117 76.045 70.9373C76.1626 70.8266 76.3218 70.7712 76.4809 70.7712C76.5155 70.7712 76.5501 70.7712 76.5917 70.7781L93.4273 73.45C93.628 73.4846 93.7941 73.5953 93.8979 73.7684C94.5899 74.9658 95.0535 76.274 95.2888 77.6445C95.3995 78.2536 95.4479 78.8973 95.4479 79.5687C95.4479 85.9714 90.2373 91.1835 83.8297 91.1904Z" />
+									<path d="M128.656 56.7476C127.292 41.3398 120.234 27.0464 108.782 16.5046C97.2609 5.90045 82.3142 0.0584717 66.6826 0.0584717C32.3746 0.0584717 4.46048 27.9808 4.46048 62.2989C4.46048 73.8167 7.63657 85.0369 13.6498 94.8104L0.23938 124.505L43.1763 119.93C50.6427 122.989 58.545 124.539 66.6757 124.539C68.8139 124.539 71.0074 124.429 73.2079 124.2C75.1454 123.993 77.1037 123.688 79.0274 123.3C107.758 117.493 128.732 91.9863 128.898 62.6311V62.2989C128.898 60.43 128.815 58.5611 128.649 56.7546L128.656 56.7476ZM44.8301 106.896L21.0747 109.429L28.1675 93.7099L26.7489 91.8065C26.6451 91.668 26.5413 91.5295 26.4237 91.3703C20.2651 82.8635 17.0128 72.8131 17.0128 62.3058C17.0128 34.9095 39.2943 12.6214 66.6826 12.6214C92.3409 12.6214 114.09 32.6461 116.186 58.2082C116.297 59.5787 116.359 60.9561 116.359 62.3128C116.359 62.7004 116.352 63.081 116.345 63.4894C115.82 86.4074 99.8142 105.871 77.422 110.827C75.7128 111.208 73.9621 111.499 72.2184 111.686C70.4054 111.893 68.544 111.997 66.6964 111.997C60.1158 111.997 53.722 110.724 47.681 108.204C47.0098 107.934 46.3524 107.643 45.7366 107.346L44.8371 106.91L44.8301 106.896Z" />
+								</svg></a><a class="socials__link socials__link--telegram" href="https://t.me/perevozki063" aria-label="Ссылка на наш телеграм канал"><svg width="25" height="25" viewBox="0 0 122 101" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M3.91253 45.9211C4.18932 45.7826 4.46623 45.6511 4.7361 45.5265C9.42767 43.353 14.1815 41.318 18.9285 39.283C19.1845 39.283 19.6134 38.9854 19.8556 38.8885C20.2223 38.7292 20.5891 38.577 20.9559 38.4178C21.6617 38.1133 22.3676 37.8156 23.0664 37.511C24.4781 36.9088 25.8827 36.3067 27.2943 35.7045C30.1106 34.5002 32.9269 33.2958 35.7433 32.0845C41.3759 29.6757 47.0156 27.2599 52.6483 24.8511C58.2809 22.4423 63.9204 20.0267 69.5531 17.6179C75.1858 15.2091 80.8253 12.7935 86.4579 10.3847C92.0906 7.97591 97.7303 5.56025 103.363 3.15147C104.615 2.61158 105.972 1.80863 107.314 1.57329C108.442 1.37256 109.542 0.985004 110.677 0.770429C112.829 0.362045 115.202 0.195896 117.265 1.0888C117.977 1.40028 118.635 1.83627 119.181 2.38308C121.797 4.97182 121.43 9.22188 120.877 12.8627C117.022 38.2379 113.168 63.62 109.307 88.9952C108.781 92.4768 108.061 96.2976 105.314 98.4987C102.989 100.361 99.6815 100.568 96.8098 99.7792C93.9381 98.9832 91.4056 97.3151 88.9214 95.6746C78.6179 88.8498 68.3076 82.0248 58.0041 75.2C55.5545 73.5803 52.8282 71.4623 52.8559 68.5206C52.8697 66.7486 53.9284 65.1703 55.0078 63.7652C63.962 52.0813 76.8811 44.0522 86.4926 32.9081C87.8488 31.3369 88.9145 28.499 87.0531 27.5923C85.946 27.0524 84.6726 27.7859 83.6623 28.485C70.9577 37.3103 58.2602 46.1424 45.5555 54.9677C41.4106 57.8471 37.0651 60.8096 32.069 61.5156C27.5989 62.1525 23.1011 60.9066 18.7762 59.6329C15.1503 58.567 11.5312 57.4734 7.926 56.3451C6.00924 55.7498 4.03018 55.1061 2.54936 53.7564C1.06854 52.4066 0.217529 50.1364 1.11017 48.3368C1.67067 47.2085 2.75709 46.4956 3.89884 45.9141L3.91253 45.9211Z" />
+								</svg></a><a class="socials__link socials__link--phone" href="tel:+79277129457" aria-label="Ссылка для звонка нашему диспетчеру">+7 (927) 712-94-57</a></div>
+					</div><button class="burger-button" id="burger-button"><span class="burger-button__line burger-button__line--first"></span><span class="burger-button__line burger-button__line--second"></span><span class="burger-button__line burger-button__line--third"></span></button>
+				</div>
+			</div>
+		</div>
+		<section class="hero section">
+			<div class="container">
+				<div class="hero__content">
+					<h1 class="hero__title"><span>Ежедневные поездки</span><span class="hero__root">Самара — Казань — Самара</span></h1>
+					<p class="hero__intro">Надежность и комфорт в каждом километре!</p><button class="button button--modal" aria-label="Открыть анкету для бронирования">Оставить заявку</button>
+				</div>
+			</div>
+		</section>
+	</header>
+	<main class="page">
+		<div class="load">
+			<div class="load__area">
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+			</div>
+		</div>
+		<section class="advantages section">
+			<div class="container">
+				<h2 class="section__title section__title--no-margin">Почему выбирают нас</h2>
+				<p class="advantages__subtitle">Ваш комфорт и безопасность — наша главная цель!</p>
+				<div class="advantages__wrapper">
+					<div class="advantages__card advantages__card--speed">
+						<h3 class="advantages__name">Скорость</h3>
+						<p class="advantages__description">Быстрая доставка пассажиров благодаря оптимально спланированному маршруту</p>
+					</div>
+					<div class="advantages__card advantages__card--safety">
+						<h3 class="advantages__name">Надежность</h3>
+						<p class="advantages__description">Высокий уровень безопасности благодаря профессиональным водителям и регулярному техническому обслуживанию</p>
+					</div>
+					<div class="advantages__card advantages__card--comfort">
+						<h3 class="advantages__name">Комфорт</h3>
+						<p class="advantages__description">Удобные сиденья и приятная атмосфера для комфортного путешествия</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="about section" id="about">
+			<div class="container">
+				<h2 class="section__title">Наш автопарк</h2>
+				<div class="about__content">
+					<div class="about__text">
+						<div class="about__description">
+							<p class="about__intro">Мы гордимся современным и надежным автопарком, который обеспечивает комфорт и безопасность на каждом этапе поездки.</p>
+							<ul class="about__list about__list--desktop">
+								<li class="about__item">Мы предоставляем детские автокресла для удобного и безопасного путешествия с детьми. При бронировании поездки просто назовите возраст ребёнка и необходимость автокресла</li>
+								<li class="about__item">За дополнительную плату возможен трансфер пассажира до нужного адреса.</li>
+								<li class="about__item">При желании возможно предварительное бронирование места в салоне;</li>
+							</ul>
+						</div>
+					</div>
+					<div class="transport"><button class="slider-button transport__button transport__button--prev" id="transport__button--prev" aria-label="Кнопка: предыдущий слайд"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M14.43 5.93005L20.5 12.0001L14.43 18.0701" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M3.5 12H20.33" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+							</svg></button><button class="slider-button transport__button transport__button--next" id="transport__button--next" aria-label="Кнопка: следующий слайд"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M14.43 5.93005L20.5 12.0001L14.43 18.0701" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M3.5 12H20.33" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+							</svg></button>
+						<div class="transport__slider">
+							<div class="transport__slide">
+								<picture>
+									<source srcset="/img/transport/viano.webp" type="image/webp"><img class="transport__img" src="/img/transport/viano.jpg" alt="Фотография автомобиля Мерседес Бенц Виано" width="550" height="220" loading="lazy">
+								</picture>
+								<div class="transport__content">
+									<h3 class="transport__title">Mercedes Benz Viano</h3>
+									<div class="transport__info">
+										<p class="transport__place">Количество мест:<span class="transport__answer">7</span></p>
+										<p class="transport__conditioner">Кондиционер:<span class="transport__answer">есть</span></p>
+									</div><button class="button button--small button--modal" aria-label="Открыть анкету для бронирования">заказать поездку</button>
+								</div>
+							</div>
+							<div class="transport__slide">
+								<picture>
+									<source srcset="/img/transport/largus.webp" type="image/webp"><img class="transport__img" src="/img/transport/largus.jpg" alt="Фотография автомобиля Лада Ларгус" width="550" height="220" loading="lazy">
+								</picture>
+								<div class="transport__content">
+									<h3 class="transport__title">Lada Largus</h3>
+									<div class="transport__info">
+										<p class="transport__place">Количество мест:<span class="transport__answer">6</span></p>
+										<p class="transport__conditioner">Кондиционер:<span class="transport__answer">есть</span></p>
+									</div><button class="button button--small button--modal" aria-label="Открыть анкету для бронирования">заказать поездку</button>
+								</div>
+							</div>
+							<div class="transport__slide">
+								<picture>
+									<source srcset="/img/transport/freed.webp" type="image/webp"><img class="transport__img" src="./img/transport/freed.jpg" alt="Фотография автомобиля Хонда Фрид" width="550" height="220" loading="lazy">
+								</picture>
+								<div class="transport__content">
+									<h3 class="transport__title">Honda Freed</h3>
+									<div class="transport__info">
+										<p class="transport__place">Количество мест:<span class="transport__answer">7</span></p>
+										<p class="transport__conditioner">Кондиционер:<span class="transport__answer">есть</span></p>
+									</div><button class="button button--small button--modal" aria-label="Открыть анкету для бронирования">заказать поездку</button>
+								</div>
+							</div>
+							<div class="transport__slide">
+								<picture>
+									<source srcset="/img/transport/caravelle.webp" type="image/webp"><img class="transport__img" src="./img/transport/caravelle.jpg" alt="Фотография автомобиля Фольксваген Каравелла" width="550" height="220" loading="lazy">
+								</picture>
+								<div class="transport__content">
+									<h3 class="transport__title">Caravelle Volkswagen</h3>
+									<div class="transport__info">
+										<p class="transport__place">Количество мест:<span class="transport__answer">7</span></p>
+										<p class="transport__conditioner">Кондиционер:<span class="transport__answer">есть</span></p>
+									</div><button class="button button--small button--modal" aria-label="Открыть анкету для бронирования">заказать поездку</button>
+								</div>
+							</div>
+							<div class="transport__slide">
+								<picture>
+									<source srcset="/img/transport/alphard.webp" type="image/webp"><img class="transport__img" src="./img/transport/alphard.jpg" alt="Фотография автомобиля Тойота Альфард" width="550" height="220" loading="lazy">
+								</picture>
+								<div class="transport__content">
+									<h3 class="transport__title">Toyota Alphard</h3>
+									<div class="transport__info">
+										<p class="transport__place">Количество мест:<span class="transport__answer">7</span></p>
+										<p class="transport__conditioner">Кондиционер:<span class="transport__answer">есть</span></p>
+									</div><button class="button button--small button--modal" aria-label="Открыть анкету для бронирования">заказать поездку</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<ul class="about__list about__list--mobile">
+						<li class="about__item">Мы предоставляем детские автокресла для удобного и безопасного путешествия с детьми. При бронировании поездки просто назовите возраст ребёнка и необходимость автокресла</li>
+						<li class="about__item">За дополнительную плату возможен трансфер пассажира до нужного адреса.</li>
+						<li class="about__item">При желании возможно предварительное бронирование места в салоне;</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="services section" id="services">
+			<div class="container">
+				<h2 class="section__title services__title">Наши услуги</h2>
+				<div class="services__list">
+					<div class="services__card">
+						<div class="services__content">
+							<h3 class="services__name">пассажирские перевозки</h3>
+							<p class="services__price">Цена: 1 500 руб.</p>
+							<p class="services__description">Мы предлагаем удобные и безопасные междугородние перевозки по маршруту Самара — Казань — Самара на комфортабельных автомобилях. Время в пути — 4,5 часа, в пути предусмотрена одна остановка.</p><button class="services__button button button--small button--modal" aria-label="Открыть анкету для бронирования">Оставить заявку</button>
+						</div>
+					</div>
+					<div class="services__card">
+						<div class="services__content">
+							<h3 class="services__name">Бронирование машины</h3>
+							<p class="services__price">Цена: 10 500 руб.</p>
+							<p class="services__description">Вы можете забронировать автомобиль для комфортных поездок с группой до 8 человек. Автомобиль отлично подходит для семейных путешествий, трансферов на мероприятия или в аэропорт, а также для корпоративных поездок.</p><button class="services__button button button--small button--modal" aria-label="Открыть анкету для бронирования">Оставить заявку</button>
+						</div>
+					</div>
+					<div class="services__card">
+						<div class="services__content">
+							<h3 class="services__name">Доставка посылок</h3>
+							<p class="services__price">Цена: зависит от размера</p>
+							<p class="services__description">Мы перевезем любую посылку, которая не запрещена законодательством РФ. Гарантируем сохранность, а также соблюдение сроков доставки.<br>Детали доставки обговариваются по телефону.</p><button class="services__button button button--small button--modal" aria-label="Открыть анкету для бронирования">Оставить заявку</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="schedule section" id="schedule">
+			<div class="container">
+				<h2 class="section__title">Расписание</h2>
+				<div class="schedule__wrapper">
+					<div class="schedule__card schedule__card--kazan">
+						<div class="schedule__info">
+							<div class="schedule__content">
+								<h3 class="schedule__title">Казань — Самара</h3>
+								<p class="schedule__subtitle">Отправление ежедневно</p>
+								<div class="schedule__data">
+									<p class="schedule__location">г. Казань, ул. Саид-Галеева, д. 4 (Вкусно и точка)</p>
+									<div class="schedule__time">
+										<p>Время отправления <span class="bold">(MSK)</span>: 7:00, 13:00</p>
+									</div>
+									<div class="schedule__timeframe">
+										<p>Прибытие в Самару ~ 13:00, 19:00 <span class="bold">(SAMT)</span></p>
+									</div>
+								</div>
+								<div class="schedule__buttons"><button class="schedule__button button button--small button--modal" aria-label="Открыть анкету для бронирования">Оставить заявку</button><a href="https://yandex.ru/maps/43/kazan/?ll=49.099914%2C55.792114&mode=search&sll=49.098968%2C55.792261&source=serp_navig&text=55.792261%2C49.098968&z=17.4" class="schedule__link button button--small" aria-label="Перейти на сайт Яндекс Карты к месту посадки">Открыть в картах</a></div>
+							</div>
+							<div class="map map--kazan" id="map-kazan"></div>
+						</div>
+					</div>
+					<div class="schedule__card schedule__card--samara">
+						<div class="schedule__info">
+							<div class="schedule__content">
+								<h3 class="schedule__title">Самара — Казань</h3>
+								<p class="schedule__subtitle">Отправление ежедневно</p>
+								<div class="schedule__data">
+									<p class="schedule__location">г. Самара, ул. Авроры, д. 209 (парковка Rostic`s)</p>
+									<div class="schedule__time">
+										<p>Время отправления <span class="bold">(SAMT)</span>: 7:00, 13:00</p>
+									</div>
+									<div class="schedule__timeframe">
+										<p>Прибытие в Казань ~ 11:00, 17:00 <span class="bold">(MSK)</span></p>
+									</div>
+								</div>
+								<div class="schedule__buttons"><button class="schedule__button button button--small button--modal" aria-label="Открыть анкету для бронирования">Оставить заявку</button><a href="https://yandex.ru/maps/51/samara/?ll=50.189425%2C53.216799&mode=search&sll=50.188029%2C53.217112&source=serp_navig&text=53.217112%2C50.188029&z=17.4" class="schedule__link button button--small" aria-label="Перейти на сайт Яндекс Карты к месту посадки">Открыть в картах</a></div>
+							</div>
+							<div class="map map--samara" id="map-samara"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="reviews section no-select" id="reviews">
+			<div class="container">
+				<h2 class="section__title">Отзывы наших клиентов</h2>
+				<div class="reviews__container"><button class="slider-button reviews__button reviews__button--prev" id="reviews__button--prev" aria-label="Кнопка: предыдущий слайд"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M14.43 5.93005L20.5 12.0001L14.43 18.0701" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+							<path d="M3.5 12H20.33" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+						</svg></button><button class="slider-button reviews__button reviews__button--next" id="reviews__button--next" aria-label="Кнопка: следующий слайд"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M14.43 5.93005L20.5 12.0001L14.43 18.0701" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+							<path d="M3.5 12H20.33" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+						</svg></button>
+					<div class="reviews__wrapper">
+						<div class="reviews__card">
+							<p class="reviews__name">Ильгиз</p>
+							<p class="reviews__date">14.04.2024</p>
+							<p class="reviews__text">Езжу постоянно по маршруту Самара-Казань и всегда выбираю этого перевозчика. Очень нравится знать, что поездка всегда пройдёт комфортно и с надежным водителем. Машины чистые, водители вежливые, всегда аккуратно ездят. При мне водитель ни разу не опоздал. Никогда не подводили.</p>
+						</div>
+						<div class="reviews__card">
+							<p class="reviews__name">Мария</p>
+							<p class="reviews__date">19.08.2023</p>
+							<p class="reviews__text">Поездка прошла отлично!</p>
+						</div>
+						<div class="reviews__card">
+							<p class="reviews__name">Любовь</p>
+							<p class="reviews__date">16.08.2024</p>
+							<p class="reviews__text">Переезжали из Самары в Казань, бронировали весь минивен Мерседес Виано и остались очень довольны, что попали к нему! Невероятно позитивный человек, аккуратно довез нас с двумя маленькими детьми прямо до места. Всю дорогу беседовал, не давал заскучать. Машину ведет аккуратно и спокойно. Спасибо большое!</p>
+						</div>
+						<div class="reviews__card">
+							<p class="reviews__name">Элина</p>
+							<p class="reviews__date">16.06.2024</p>
+							<p class="reviews__text">Очень душевный человек и отличный водитель.</p>
+						</div>
+						<div class="reviews__card">
+							<p class="reviews__name">Азат</p>
+							<p class="reviews__date">14.03.2024</p>
+							<p class="reviews__text">Ездил из Казани в Самару — всё прошло супер! Автомобиль удобный, водитель спокойный и вежливый, доехали быстро и без проблем. Буду ездить с ним ещё!</p>
+						</div>
+						<div class="reviews__card">
+							<p class="reviews__name">Хикмат</p>
+							<p class="reviews__date">03.11.2023</p>
+							<p class="reviews__text">Отличная поездка. Водитель вежливый и аккуратный.</p>
+						</div>
+						<div class="feedback">
+							<form class="feedback__form" id="feedback-form" method="post" action="/php/feedback-send.php">
+								<h3 class="feedback__title">
+									Оставьте свой отзыв
+								</h3>
+								<label class="feedback__label" for="feedback-name">
+									<input class="feedback__input" type="text" name="feedback-name" id="feedback-name" placeholder="Ваше имя">
+								</label>
+								<label class="feedback__label" for="footer__text">
+									<textarea class="feedback__input" name="feedback-text" id="feedback-text" rows="6" placeholder="Ваш отзыв"></textarea>
+								</label>
+								<button class="feedback__button button button--small" id="feedback-button">Отправить</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="faq section" id="faq">
+			<div class="container">
+				<h2 class="section__title">Частые вопросы</h2>
+				<div class="accordion" role="tablist">
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-1" aria-controls="body-1">Откуда производится посадка?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-1" aria-labelledby="tab-1">В Самаре посадка производится с улицы <span class="bold">Авроры, 207</span>, напротив ресторана <span class="bold">Rostic`s</span>, возможна посадка с торговых центов <span class="bold">EL RIO, Мега и гостиницы «Моя»</span> <br>В Казани возможна посадка с улицы <span class="bold">Саид-Галеева, 4</span>, парковка ресторана <span class="bold">Вкусно и Точка</span>, а также с улицы <span class="bold">Пушкина, 4</span>, напротив ресторана <span class="bold">Burger King</span> и <span class="bold">РКБ</span>.</div>
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-2" aria-controls="body-2">Будут ли остановки на маршруте?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-2" aria-labelledby="tab-2">Да, конечно. На пути из Казани мы делаем одну остановку в <span class="bold">с. Базарные Матаки</span>, на пути из Самары мы останавливаемся на комфортабельной заправке в <span class="bold">с. Высокий Колок</span>.</div>
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-3" aria-controls="body-3">Сколько по времени занимает маршрут?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-3" aria-labelledby="tab-3">В среднем с учетом остановки маршрут занимает 4,5 часа. Летом время может сократиться до 4 часов, зимой время может увеличиться до 5 часов.</div>
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-4" aria-controls="body-4">Через какие населенные пункты будем проезжать?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-4" aria-labelledby="tab-4"><span class="bold">Казань</span> — Сокуры — Именьково — Базарные Матаки — Юхмачи — Аппаково — Станция Якушка — Красный Яр — <span class="bold">Самара</span>. Обратно едем тем же маршрутом.</div>
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-5" aria-controls="body-5">Если я опоздаю, сколько вы сможете меня подождать?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-5" aria-labelledby="tab-5">Мы сможем подождать Вас максимум 10 минут. К сожалению, мы не можем заставлять ждать других пассажиров, которые пришли вовремя.</div>
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-6" aria-controls="body-6">Предоставляете детские кресла для перевозки детей?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-6" aria-labelledby="tab-6">Если с Вами едет ребенок, просьба заранее уведомить об этом по телефону. Мы подготовим для Вашего ребенка, в зависимости от возраста, бустер или детское кресло.</div>
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-7" aria-controls="body-7">Какого размера должен быть багаж для бесплатной перевозки?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-7" aria-labelledby="tab-7">Бесплатно вы можете провозить багаж размером 60×40×20см, а также ручную кладь.</div>
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-8" aria-controls="body-8">Можно ли провозить животных?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-8" aria-labelledby="tab-8">Провозить животное допускается только при согласии других пассажиров (у кого-то может быть аллергия). Перевозить можно на руках либо в переноске.</div>
+					<h3 class="accordion__head" tabindex="0" role="tab" id="tab-9" aria-controls="body-9">Можно ли пить алкоголь в пути?</h3>
+					<div class="accordion__body" tabindex="0" role="tabpanel" id="body-9" aria-labelledby="tab-9">Нет, распивать алкоголь в салоне автомобиля <span class="bold">запрещено</span>. Также мы не перевозим пассажиров в состоянии алкогольного опьянения.</div>
+				</div>
+			</div>
+		</section>
+		<section class="modal" id="modal">
+			<div class="modal__wrapper">
+				<div class="modal__content"><button class="modal__close" id="modal-close"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7.99999 6.58578L14.2929 0.292893C14.6834 -0.0976313 15.3166 -0.0976307 15.7071 0.292894C16.0976 0.683418 16.0976 1.31658 15.7071 1.70711L9.41421 7.99999L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L7.99999 9.41421L1.70711 15.7071C1.31658 16.0976 0.683418 16.0976 0.292894 15.7071C-0.0976307 15.3166 -0.0976313 14.6834 0.292893 14.2929L6.58578 7.99999L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" />
+						</svg></button>
+					<h2 class="modal__title">Заполнение анкеты</h2>
+					<form class="modal__form" id="modal-form" method="post" action="/php/modal-send.php">
+						<label class="modal__label">
+							<input class="modal__input" name="name" id="modal-name" type="text" placeholder="Имя">
+							<span class="modal__hint">Имя</span>
+						</label>
+						<label class="modal__label">
+							<input class="modal__input" type="tel" name="phone" id="modal-phone" placeholder="Телефон">
+							<span class="modal__hint">
+								Телефон
+							</span>
+						</label>
+						<label class="modal__label modal__label--select">
+							<select class="modal__select" name="route" id="modal-route">
+								<option value="Самара—Казань">Самара — Казань</option>
+								<option value="Казань—Самара">Казань — Самара</option>
+							</select>
+							<span class="modal__hint">Маршрут</span>
+						</label>
+						<label class="modal__label modal__label--select">
+							<select class="modal__select" name="time" id="modal-time">
+								<option value="6:00(Казань-Самара)">6:00 (Казань - Самара)</option>
+								<option value="7:00(Самара-Казань)">7:00 (Самара - Казань)</option>
+								<option value="13:00(Казань-Самара)">13:00 (Казань - Самара)</option>
+								<option value="14:00(Самара-Казань)">14:00 (Самара - Казань)</option>
+							</select><span class="modal__hint">Время отправления</span>
+						</label>
+						<button class="modal__button button button--small" type="submit" id="modal-button">Отправить</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<div class="container">
+			<div class="footer__content">
+				<div class="footer__intro">
+					<h2 class="footer__title"><span>Ежедневные поездки</span><span class="footer__root">Самара — Казань — Самара</span></h2>
+					<p class="footer__text">Надежность и комфорт в каждом километре!</p><button class="button button--small button--modal" aria-label="Открыть анкету для бронирования">Оставить заявку</button>
+				</div>
+				<ul class="footer__nav">
+					<li class="footer__nav-item"><a class="footer__nav-link" href="#about">О нас</a></li>
+					<li class="footer__nav-item"><a class="footer__nav-link" href="#services">Цена</a></li>
+					<li class="footer__nav-item"><a class="footer__nav-link" href="#reviews">Отзывы</a></li>
+					<li class="footer__nav-item"><a class="footer__nav-link" href="#schedule">Рейсы</a></li>
+					<li class="footer__nav-item"><a class="footer__nav-link" href="#faq">FAQ</a></li>
+				</ul>
+				<div class="socials">
+					<div class="socials__list"><a class="socials__link socials__link--whatsapp" href="https://wa.me/+79277129457?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20" aria-label="Ссылка на Вотсап аккаунт нашего диспетчера"><svg width="25" height="25" viewBox="0 0 129 125" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M83.8297 91.1904C58.5519 91.1904 37.9865 70.612 37.9796 45.3268C37.9865 38.9173 43.204 33.7051 49.5978 33.7051C50.2552 33.7051 50.9056 33.7605 51.5284 33.8713C52.8985 34.0997 54.1994 34.5634 55.3965 35.2625C55.5695 35.3664 55.6871 35.5326 55.7148 35.7264L58.3858 52.5669C58.4204 52.7677 58.3582 52.9615 58.2267 53.1069C56.7528 54.7404 54.8706 55.9172 52.7739 56.5056L51.7637 56.7893L52.1442 57.7652C55.5902 66.542 62.6069 73.5538 71.388 77.0146L72.3637 77.4023L72.6474 76.3918C73.2355 74.2945 74.4119 72.4117 76.045 70.9373C76.1626 70.8266 76.3218 70.7712 76.4809 70.7712C76.5155 70.7712 76.5501 70.7712 76.5917 70.7781L93.4273 73.45C93.628 73.4846 93.7941 73.5953 93.8979 73.7684C94.5899 74.9658 95.0535 76.274 95.2888 77.6445C95.3995 78.2536 95.4479 78.8973 95.4479 79.5687C95.4479 85.9714 90.2373 91.1835 83.8297 91.1904Z" />
+								<path d="M128.656 56.7476C127.292 41.3398 120.234 27.0464 108.782 16.5046C97.2609 5.90045 82.3142 0.0584717 66.6826 0.0584717C32.3746 0.0584717 4.46048 27.9808 4.46048 62.2989C4.46048 73.8167 7.63657 85.0369 13.6498 94.8104L0.23938 124.505L43.1763 119.93C50.6427 122.989 58.545 124.539 66.6757 124.539C68.8139 124.539 71.0074 124.429 73.2079 124.2C75.1454 123.993 77.1037 123.688 79.0274 123.3C107.758 117.493 128.732 91.9863 128.898 62.6311V62.2989C128.898 60.43 128.815 58.5611 128.649 56.7546L128.656 56.7476ZM44.8301 106.896L21.0747 109.429L28.1675 93.7099L26.7489 91.8065C26.6451 91.668 26.5413 91.5295 26.4237 91.3703C20.2651 82.8635 17.0128 72.8131 17.0128 62.3058C17.0128 34.9095 39.2943 12.6214 66.6826 12.6214C92.3409 12.6214 114.09 32.6461 116.186 58.2082C116.297 59.5787 116.359 60.9561 116.359 62.3128C116.359 62.7004 116.352 63.081 116.345 63.4894C115.82 86.4074 99.8142 105.871 77.422 110.827C75.7128 111.208 73.9621 111.499 72.2184 111.686C70.4054 111.893 68.544 111.997 66.6964 111.997C60.1158 111.997 53.722 110.724 47.681 108.204C47.0098 107.934 46.3524 107.643 45.7366 107.346L44.8371 106.91L44.8301 106.896Z" />
+							</svg></a><a class="socials__link socials__link--telegram" href="https://t.me/perevozki063" aria-label="Ссылка на наш телеграм канал"><svg width="25" height="25" viewBox="0 0 122 101" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3.91253 45.9211C4.18932 45.7826 4.46623 45.6511 4.7361 45.5265C9.42767 43.353 14.1815 41.318 18.9285 39.283C19.1845 39.283 19.6134 38.9854 19.8556 38.8885C20.2223 38.7292 20.5891 38.577 20.9559 38.4178C21.6617 38.1133 22.3676 37.8156 23.0664 37.511C24.4781 36.9088 25.8827 36.3067 27.2943 35.7045C30.1106 34.5002 32.9269 33.2958 35.7433 32.0845C41.3759 29.6757 47.0156 27.2599 52.6483 24.8511C58.2809 22.4423 63.9204 20.0267 69.5531 17.6179C75.1858 15.2091 80.8253 12.7935 86.4579 10.3847C92.0906 7.97591 97.7303 5.56025 103.363 3.15147C104.615 2.61158 105.972 1.80863 107.314 1.57329C108.442 1.37256 109.542 0.985004 110.677 0.770429C112.829 0.362045 115.202 0.195896 117.265 1.0888C117.977 1.40028 118.635 1.83627 119.181 2.38308C121.797 4.97182 121.43 9.22188 120.877 12.8627C117.022 38.2379 113.168 63.62 109.307 88.9952C108.781 92.4768 108.061 96.2976 105.314 98.4987C102.989 100.361 99.6815 100.568 96.8098 99.7792C93.9381 98.9832 91.4056 97.3151 88.9214 95.6746C78.6179 88.8498 68.3076 82.0248 58.0041 75.2C55.5545 73.5803 52.8282 71.4623 52.8559 68.5206C52.8697 66.7486 53.9284 65.1703 55.0078 63.7652C63.962 52.0813 76.8811 44.0522 86.4926 32.9081C87.8488 31.3369 88.9145 28.499 87.0531 27.5923C85.946 27.0524 84.6726 27.7859 83.6623 28.485C70.9577 37.3103 58.2602 46.1424 45.5555 54.9677C41.4106 57.8471 37.0651 60.8096 32.069 61.5156C27.5989 62.1525 23.1011 60.9066 18.7762 59.6329C15.1503 58.567 11.5312 57.4734 7.926 56.3451C6.00924 55.7498 4.03018 55.1061 2.54936 53.7564C1.06854 52.4066 0.217529 50.1364 1.11017 48.3368C1.67067 47.2085 2.75709 46.4956 3.89884 45.9141L3.91253 45.9211Z" />
+							</svg></a><a class="socials__link socials__link--phone" href="tel:+79277129457" aria-label="Ссылка для звонка нашему диспетчеру">+7 (927) 712-94-57</a></div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script defer src="/js/index.min.js"></script>
+
+</body>
+
+</html>
