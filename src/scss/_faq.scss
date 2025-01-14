@@ -1,0 +1,120 @@
+
+.faq {
+}
+.container {
+}
+.accordion {
+}
+.accordion__head {
+	font-size: 18px;
+	color: var(--light);
+	font-weight: 700;
+	text-transform: uppercase;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	background-color: #cc9566;
+	background-color: var(--main-color);
+	padding: 5px 20px;
+	border-radius: 5px;
+
+	outline-offset: 3px;
+	cursor: pointer;
+	transition:
+		background-color 0.3s ease-in,
+		outline-color 0.3s ease-in,
+		border-radius 0.3s ease-in;
+}
+
+.accordion__head:nth-of-type(odd) {
+	background-color: #aca773;
+}
+
+@media (hover: hover) {
+	.accordion__head:hover {
+		background-color: var(--second-color);
+	}
+
+	.accordion__head:hover::after {
+	}
+}
+
+.accordion__head:focus-visible {
+	outline-color: var(--main-color);
+}
+.accordion__head:nth-of-type(odd):focus-visible {
+	outline-color: #aca773;
+}
+
+.accordion__head:active {
+	background-color: var(--main-color);
+}
+
+.accordion__head:not(:first-of-type) {
+	margin-top: 15px;
+}
+.accordion__head::after {
+	content: "";
+
+	display: block;
+	width: 36px;
+	height: 36px;
+
+	background-image: url("./../img/icon/ic-arrow.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	transition:
+		background-image 0.3s ease-in,
+		rotate 0.3s ease-in;
+}
+
+.accordion__head.ui-accordion-header-active {
+	border-radius: 5px 5px 0px 0px;
+}
+
+.accordion__head.ui-accordion-header-active::after {
+	rotate: -180deg;
+}
+.accordion__head.ui-accordion-header-collapsed {
+}
+.accordion__body {
+	font-size: 17px;
+	padding: 15px 30px;
+	border-radius: 0 0 5px 5px;
+	display: none;
+	box-shadow: #64646f33 0px 7px 29px 0px;
+	background-color: #fff;
+}
+
+@media (max-width: 850px) {
+	.accordion__head {
+		font-size: clamp(14px, 2vw, 17px);
+	}
+	.accordion__head::after {
+		width: 26px;
+		height: 26px;
+	}
+
+	.accordion__body {
+		font-size: clamp(14px, 1.88235294117vw, 16px);
+		padding: 15px;
+	}
+}
+
+@media (max-width: 550px) {
+	.accordion__head {
+		font-size: 12px;
+	}
+
+	.accordion__body {
+		font-size: 12px;
+	}
+
+	.accordion__head::after {
+		width: 22px;
+		height: 22px;
+		object-fit: contain;
+	}
+}

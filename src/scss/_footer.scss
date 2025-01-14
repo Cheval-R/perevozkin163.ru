@@ -1,0 +1,211 @@
+
+.footer {
+	background: linear-gradient(0deg, #2f343a80 0%, #2f343a80 100%),
+		image-set(
+			url("./../img/footer/footer-bg.avif") type("image/avif") 1x,
+			url("./../img/footer/footer-bg.webp") type("image/webp") 1x,
+			url("./../img/footer/footer-bg.jpg") type("image/jpeg") 1x
+		);
+	background-position: center;
+	background-size: cover;
+	color: var(--light);
+	background-size: cover;
+	padding: 40px 0 50px;
+}
+.footer__content {
+	display: grid;
+	grid-template-areas:
+		"intro socials"
+		"intro nav";
+
+	gap: 10px;
+	justify-content: space-between;
+}
+
+.footer__intro {
+	grid-area: intro;
+	flex-shrink: 0;
+	flex-basis: max-content;
+	font-size: 18px;
+}
+.footer__title {
+	display: flex;
+	flex-direction: column;
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+.footer__root {
+	font-size: 26px;
+}
+
+.footer__text {
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+.footer__nav {
+	grid-area: nav;
+	display: flex;
+
+	gap: 20px;
+	font-size: 18px;
+}
+
+.footer__nav-link {
+	border-radius: 5px;
+	outline: 2px solid var(--opacity-color);
+	transition:
+		color 0.3s ease-in,
+		outline-color 0.3s ease-in;
+}
+
+@media (hover: hover) {
+	.footer__nav-link:hover {
+		color: var(--main-color);
+	}
+}
+.footer__nav-link:focus-visible {
+	color: var(--main-color);
+}
+
+.footer__nav-link:active {
+	color: var(--second-color);
+}
+
+.footer .button {
+	padding: 10px 15px;
+}
+.footer .socials__list {
+	justify-content: flex-end;
+}
+
+.footer .socials {
+	grid-area: socials;
+	margin-left: 0;
+}
+.footer .socials__link--whatsapp {
+	grid-area: whatsapp;
+}
+.footer .socials__link--telegram {
+	grid-area: telegram;
+}
+.footer .socials__link--phone {
+	grid-area: phone;
+	align-self: flex-end;
+}
+.footer .socials__link--phone::before {
+	bottom: 25px;
+}
+@media (max-width: 850px) {
+	.footer__nav {
+	}
+}
+@media (max-width: 750px) {
+	.footer__content {
+		grid-template-areas: "intro nav socials";
+	}
+	.footer__title {
+		font-size: clamp(16px, 2.6vw, 20px);
+	}
+	.footer__root {
+		font-size: clamp(22px, 3.46vw, 26px);
+	}
+	.footer__text {
+		font-size: 14px;
+	}
+	.footer__nav {
+		gap: 15px;
+		font-size: 16px;
+
+		font-size: 16px;
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.footer .socials {
+		align-self: flex-start;
+	}
+	.footer .socials__list {
+		display: grid;
+		grid-template-areas:
+			"whatsapp telegram"
+			"phone phone";
+		justify-content: flex-start;
+		gap: 20px 15px;
+	}
+	.footer .socials__link {
+		text-align: center;
+	}
+
+	.footer .socials__link svg {
+		margin: 0 auto;
+		width: 30px;
+		height: 30px;
+	}
+}
+@media (max-width: 650px) {
+	.footer__content {
+		justify-content: space-between;
+		grid-template-columns: unset;
+		gap: 20px 5px;
+		grid-template-areas:
+			"intro socials"
+			"nav nav";
+	}
+	.footer__intro {
+		grid-area: intro;
+	}
+	.footer__title {
+		font-size: 14px;
+	}
+	.footer__root {
+		font-size: 18px;
+	}
+	.footer__text {
+		font-size: 12px;
+	}
+	.footer .socials {
+		grid-area: socials;
+	}
+	.footer .socials__list {
+		grid-template-areas: "whatsapp telegram phone";
+	}
+	.footer .socials__link--phone {
+		font-size: 14px;
+	}
+	.footer__nav {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		grid-area: nav;
+		font-size: 14px;
+	}
+	.footer .button {
+		padding: 5px 10px;
+	}
+}
+@media (max-width: 500px) {
+	.footer__content {
+		grid-template-areas:
+			"intro nav"
+			"socials nav";
+	}
+	.footer .socials__list {
+		grid-template-areas: "whatsapp telegram phone";
+	}
+	.footer__nav {
+		flex-direction: column;
+		gap: 10px;
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 400px) {
+	.footer__content {
+		grid-template-areas:
+			"intro"
+			"socials"
+			"nav";
+	}
+	.footer__nav {
+		flex-direction: row;
+	}
+}

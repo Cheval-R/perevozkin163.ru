@@ -1,0 +1,58 @@
+.advantages {
+}
+.advantages__subtitle {
+  font-size: clamp(16px, 2.8vw, 24px);
+  font-weight: 700;
+  margin-bottom: clamp(20px, 5.3vw, 45px);
+}
+.advantages__intro {
+  margin-bottom: 35px;
+}
+.advantages__wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.advantages__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-basis: 33.3%;
+}
+
+.advantages__card::before {
+  content: "";
+  display: block;
+  width: clamp(85px, 14.7vw, 125px);
+  height: clamp(85px, 14.7vw, 125px);
+  background-size: cover;
+}
+.advantages__card--speed::before {
+  background-image: url("./../img/icon/ic-speed.svg");
+}
+
+.advantages__card--safety::before {
+  background-image: url("./../img/icon/ic-shield.svg");
+}
+.advantages__card--comfort::before {
+  background-image: url("./../img/icon/ic-comfort.svg");
+}
+.advantages__name {
+  font-size: clamp(14px, 2.6vw, 22px);
+  margin-bottom: 15px;
+}
+.advantages__description {
+  text-wrap: balance;
+  font-size: clamp(14px, 1.9vw, 18px);
+}
+
+@media (max-width: 650px) {
+  .advantages__wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .advantages__card {
+    max-width: 300px;
+  }
+}

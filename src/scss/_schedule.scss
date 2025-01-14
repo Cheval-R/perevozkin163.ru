@@ -1,0 +1,152 @@
+
+.schedule {
+}
+.schedule__wrapper {
+	display: flex;
+	justify-content: space-between;
+
+	gap: 20px;
+}
+.schedule__card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	box-shadow: #64646f33 0px 7px 29px 0px;
+}
+.schedule__card::before {
+	content: "";
+	display: block;
+	width: auto;
+
+	height: clamp(120px, 21.3333333333vw, 160px);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.schedule__card--kazan::before {
+	background: image-set(
+			url("./../img/schedule/vkusno.avif") type("image/avif") 1x,
+			url("./../img/schedule/vkusno.webp") type("image/webp") 1x,
+			url("./../img/schedule/vkusno.jpg") type("image/jpeg") 1x
+		)
+		top / cover no-repeat;
+}
+
+.map {
+	width: clamp(100px, 45.454545vw, 500px);
+	height: clamp(100px, 23.5294117vw, 200px);
+}
+
+.schedule__card--samara {
+}
+.schedule__card--samara::before {
+	background: image-set(
+			url("./../img/schedule/rostics.avif") type("image/avif") 1x,
+			url("./../img/schedule/rostics.webp") type("image/webp") 1x,
+			url("./../img/schedule/rostics.jpg") type("image/jpeg") 1x
+		)
+		bottom / cover no-repeat;
+}
+.schedule__content {
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+}
+.schedule__title {
+	font-size: clamp(16px, 3.2vw, 24px);
+}
+.schedule__subtitle {
+	font-size: clamp(12px, 2.4vw, 18px);
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+.schedule__data {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: clamp(12px, 1.88235294117vw, 16px);
+	margin-bottom: 15px;
+}
+.schedule__location,
+.schedule__time,
+.schedule__timeframe {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.schedule__location::before,
+.schedule__time::before,
+.schedule__timeframe::before {
+	content: "";
+	display: block;
+	width: clamp(16px, 2.823529411764705vw, 24px);
+	height: clamp(16px, 2.823529411764705vw, 24px);
+	flex-shrink: 0;
+	background-size: contain;
+}
+.schedule__location::before {
+	background-image: url("./../img/icon/ic-location.svg");
+}
+.schedule__time::before {
+	background-image: url("./../img/icon/ic-timer.svg");
+}
+.schedule__timeframe::before {
+	background-image: url("./../img/icon/ic-clock.svg");
+}
+
+.schedule__time p {
+}
+
+.schedule__button {
+}
+
+.map {
+	cursor: grab;
+}
+
+.ymaps3x0--default-marker__icon svg {
+	height: 50px !important;
+	width: 40px !important;
+}
+
+.ymaps3x0--map-copyrights {
+	display: none !important;
+}
+
+.schedule__buttons {
+	display: flex;
+	gap: 10px;
+	justify-content: space-between;
+}
+
+@media (max-width: 550px) {
+	.schedule__wrapper {
+		flex-direction: column;
+	}
+	.schedule__info {
+		display: flex;
+	}
+	.map {
+		height: auto;
+	}
+}
+@media (max-width: 450px) {
+	.schedule__wrapper {
+		flex-direction: column;
+	}
+	.schedule__content {
+		padding: 10px;
+	}
+	.schedule__info {
+		display: block;
+	}
+	.map {
+		height: 100px;
+		width: auto;
+	}
+
+	.schedule__buttons {
+		justify-content: flex-start;
+	}
+}

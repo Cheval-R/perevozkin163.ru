@@ -1,0 +1,122 @@
+.services {
+}
+.container {
+}
+
+.services__list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+	gap: 20px;
+}
+.services__card {
+	border-radius: 10px;
+
+	display: flex;
+
+	flex-direction: column;
+	box-shadow: #64646f33 0px 7px 29px 0px;
+}
+.services__card::before {
+	content: "";
+	display: block;
+	flex-shrink: 0;
+	width: 100%;
+	height: clamp(150px, 21.8vw, 240px);
+	background-position: bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.services__card:nth-child(1)::before {
+	background: image-set(
+			url("./../img/services/auto.avif") type("image/avif") 1x,
+			url("./../img/services/auto.webp") type("image/webp") 1x,
+			url("./../img/services/auto.jpg") type("image/jpeg") 1x
+		)
+		bottom / cover no-repeat;
+}
+.services__card:nth-child(2)::before {
+	background: image-set(
+			url("./../img/services/mini.avif") type("image/avif") 1x,
+			url("./../img/services/mini.webp") type("image/webp") 1x,
+			url("./../img/services/mini.jpg") type("image/jpeg") 1x
+		)
+		bottom / cover no-repeat;
+}
+.services__card:nth-child(3)::before {
+	background: image-set(
+			url("./../img/services/package.avif") type("image/avif") 1x,
+			url("./../img/services/package.webp") type("image/webp") 1x,
+			url("./../img/services/package.jpg") type("image/jpeg") 1x
+		)
+		bottom / cover no-repeat;
+}
+
+.services__img {
+	border-radius: 10px 10px 0 0;
+}
+
+.services__content {
+	display: grid;
+
+	height: 100%;
+	padding: 20px 15px;
+}
+
+.services__name {
+	font-size: clamp(14px, 1.8vw, 20px);
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+.services__name::after {
+	content: "";
+	display: block;
+	height: 3px;
+	width: 30%;
+	background-color: var(--green-color);
+}
+
+.services__price {
+	font-size: clamp(14px, 2vw, 18px);
+	margin-bottom: 15px;
+	font-weight: 700;
+}
+.services__description {
+	text-wrap: balance;
+	font-size: clamp(12px, 1.7vw, 16px);
+	margin-bottom: 25px;
+}
+.services__button {
+	margin-top: auto;
+}
+
+@media (max-width: 750px) {
+	.services__name {
+		font-size: clamp(14px, 2.4vw, 18px);
+	}
+	.services__price {
+		font-size: clamp(12px, 2.13vw, 16px);
+		margin-bottom: 5px;
+	}
+	.services__description {
+		font-size: clamp(12px, 1.9vw, 14px);
+		margin-bottom: 10px;
+	}
+	.services__list {
+		grid-template-columns: auto;
+		justify-content: center;
+	}
+	.services__card {
+		max-width: 400px;
+	}
+	.services__card::before {
+		height: 240px;
+	}
+}
+
+@media (max-width: 400px) {
+	.services__card::before {
+		height: clamp(150px, 47vw, 200px);
+	}
+}
