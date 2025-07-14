@@ -195,13 +195,13 @@ $('#modal-route').on('change', function (event) {
   if (event.target.value === 'Самара—Казань') {
     $('#modal-time').append(`
       <option value="7:00(Самара-Казань)">7:00 (Самара - Казань)</option>
-      <option value="14:00(Самара-Казань)">14:00 (Самара - Казань)</option>
-    `);
+      `);
+    // <option value="14:00(Самара-Казань)">14:00 (Самара - Казань)</option>
   } else if (event.target.value === 'Казань—Самара') {
     $('#modal-time').append(`
-      <option value="6:00(Казань-Самара)">6:00 (Казань - Самара)</option>
       <option value="13:00(Казань-Самара)">13:00 (Казань - Самара)</option>
-    `);
+      `);
+    // <option value="6:00(Казань-Самара)">6:00 (Казань - Самара)</option>
   }
 });
 
@@ -213,6 +213,40 @@ const phoneMask = new Inputmask({
   showMaskOnHover: false,
 });
 phoneMask.mask(modalPhone);
+
+// Функция для отправки данных в Telegram
+function SendDataToTelegram(formData) {
+  const botToken = '7507618319:AAEEsRkIw8ZpASZ_XU3pllqV1AUKJ5YeGDE'; // Токен вашего бота
+  const chatId = '-1002882369249'; // ID получателя (пользователя)
+  const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`; // URL для отправки сообщения
+
+  // Формируем сообщение в формате HTML
+  const message = `
+  📩 <b><u>НОВОЕ БРОНИРОВАНИЕ</u></b>:
+  <b>Имя:</b> ${formData.firstName}
+  <b>Номер телефона:</b> ${formData.phoneNumber}
+  <b>Дата поездки:</b> ${formData.date}
+  <b>Маршрут:</b> ${formData.route}
+  <b>Время:</b> ${formData.time}
+    `;
+
+  // Параметры, которые будем отправлять
+  const params = {
+    chat_id: chatId, // ID чата
+    text: message, // Текст сообщения
+    parse_mode: 'HTML' // Режим парсинга HTML
+  };
+
+  // Отправляем данные с помощью fetch API
+  return fetch(apiUrl, {
+    method: 'POST', // Метод отправки
+    headers: {
+      'Content-Type': 'application/json', // Указываем тип содержимого
+    },
+    body: JSON.stringify(params) // Преобразуем параметры в JSON
+  }).then(response => response.json()); // Возвращаем ответ в формате JSON
+}
+
 
 const modalValidator = new JustValidate('#modal-form');
 modalValidator
@@ -270,27 +304,57 @@ modalValidator
   ])
   .onSuccess(event => {
     event.preventDefault();
+    const formData = { // Собираем данные из формы
+      firstName: document.getElementById('modal-name').value,
+      phoneNumber: document.getElementById('modal-phone').value,
+      date: document.getElementById('modal-date').value,
+      route: document.getElementById('modal-route').value,
+      time: document.getElementById('modal-time').value,
 
-    $.ajax({
-      // url: 'https://jsonplaceholder.typicode.com/posts',
-      url: './../php/modal-send.php',
-
-      type: 'POST',
-
-      data: $('#modal-form').serialize(),
-      success: function (response) {
-        $('.modal__title').text('Спасибо! Заявка успешно отправлена!');
-
-        setTimeout(function () {
+    };
+    SendDataToTelegram(formData)
+      .then(result => {
+        if (result.ok) {
+          // Если данные успешно отправлены
+          $('.modal__title').innerHTML = 'Ваша анкета успешно отправлена';
+        } else {
+          // Если произошла ошибка при отправке
+          $('.modal__title').innerHTML = 'Ошибка при отправке анкеты. Пожалуйста, попробуйте еще раз.';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Обработка ошибки
+        $('.modal__title').innerHTML = 'Произошла ошибка. Пожалуйста, попробуйте позже.';
+      })
+      .finally(() => {
+        // Закрываем модальное окно и сбрасываем форму через 3 секунды
+        setTimeout(() => {
           modalClose($('.modal'));
           $('#modal-form')[0].reset();
           $('.modal__title').text('Заполнение анкеты');
-        }, 1000);
-      },
-      error: function (response) {
-        console.log('err');
-      }
-    });
+        }, 3000);
+      });
+    // $.ajax({
+    //   // url: 'https://jsonplaceholder.typicode.com/posts',
+    //   url: './../php/modal-send.php',
+
+    //   type: 'POST',
+
+    //   data: $('#modal-form').serialize(),
+    //   success: function (response) {
+    //     $('.modal__title').text('Спасибо! Заявка успешно отправлена!');
+
+    //     setTimeout(function () {
+    //       modalClose($('.modal'));
+    //       $('#modal-form')[0].reset();
+    //       $('.modal__title').text('Заполнение анкеты');
+    //     }, 1000);
+    //   },
+    //   error: function (response) {
+    //     console.log('err');
+    //   }
+    // });
   });
 
 const burger = $('#burger');
