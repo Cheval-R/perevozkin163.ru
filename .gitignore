@@ -1,3 +1,7 @@
 node_modules/
 .secrets/*
 !.secrets/telegram.example.php
+.DS_Store
+.idea/
+logs/
+*.log

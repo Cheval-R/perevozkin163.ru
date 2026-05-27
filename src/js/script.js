@@ -1,6 +1,34 @@
 import AirDatepicker from 'air-datepicker';
 // import localeEn from 'air-datepicker/locale/en';
 
+const formStartedAt = Math.floor(Date.now() / 1000);
+
+function setFormToken(formSelector, token) {
+  $(`${formSelector} input[name="csrf_token"]`).val(token || '');
+}
+
+function refreshFormToken(form, formSelector) {
+  return $.ajax({
+    url: `./../php/form-token.php?form=${form}`,
+    type: 'GET',
+    dataType: 'json',
+    cache: false,
+    success: function (response) {
+      setFormToken(formSelector, response.token);
+    },
+    error: function () {
+      setFormToken(formSelector, '');
+    }
+  });
+}
+
+function focusFirstInvalidField(fields) {
+  const invalidField = Object.values(fields || {}).find(field => !field.isValid);
+  if (invalidField && invalidField.elem) {
+    invalidField.elem.focus();
+  }
+}
+
 $(window).on('load', function () {
   var $preloader = $('.load');
   $preloader.delay(350).fadeOut('slow');
@@ -50,7 +78,10 @@ $('.reviews__wrapper').slick({
 
 $(document).ready(function () {
   let $selector = $('select');
-  $selector.prop('selectedIndex', -1);
+  $selector.val('');
+  $('input[name="form_started_at"]').val(formStartedAt);
+  refreshFormToken('booking', '#modal-form');
+  refreshFormToken('feedback', '#feedback-form');
 });
 
 const feedbackValidator = new JustValidate('#feedback-form');
@@ -100,9 +131,12 @@ feedbackValidator
         $('.feedback__title').text('Спасибо за ваш отзыв!')
       },
       error: function (response) {
-        console.log('err');
+        $('.feedback__title').text(response.responseText || 'Ошибка при отправке. Попробуйте снова.');
       }
     });
+  })
+  .onFail(fields => {
+    focusFirstInvalidField(fields);
   });
 
 $('.accordion').accordion({
@@ -112,6 +146,12 @@ $('.accordion').accordion({
 })
 
 const modal = $('#modal');
+const modalForm = $('#modal-form');
+const modalStatus = $('#modal-status');
+const modalSubmit = $('#modal-button');
+const modalRoute = $('#modal-route');
+const modalTime = $('#modal-time');
+
 modal.on('change', function (event) {
   if (event.target === $('#modal-time')[0] || event.target === $('#modal-route')[0])
     selectChanger(event.target);
@@ -120,26 +160,45 @@ modal.on('change', function (event) {
 function selectChanger(select) {
   if ($(select).val() !== '') {
     $(select).css('color', '#424551');
+    $(select).addClass('has-value');
     $(select).siblings('.modal__hint').addClass('modal__hint--top');
     $(select).siblings('.modal__hint').addClass('modal__hint--completed');
   } else {
     $(select).css('color', '#757575');
+    $(select).removeClass('has-value');
     $(select).siblings('.modal__hint').removeClass('modal__hint--top');
     $(select).siblings('.modal__hint').removeClass('modal__hint--completed');
   }
 }
 
-$('.modal__label').on('mouseenter', function () {
-  $(this).find('.modal__hint').addClass('modal__hint--top');
-});
+function setModalStatus(type, text) {
+  modalStatus
+    .removeClass('modal__status--success modal__status--error')
+    .text('');
 
-$('.modal__label').on('mouseleave', function () {
-  const hint = $(this).find('.modal__hint');
-  if (!hint.hasClass('modal__hint--completed'))
-    hint.removeClass('modal__hint--top');
-});
+  if (type && text) {
+    modalStatus
+      .addClass(`modal__status--${type}`)
+      .text(text);
+  }
+}
 
-const modalButton = $('#modal-button');
+function setModalSending(isSending) {
+  modalSubmit.prop('disabled', isSending);
+  modalSubmit.text(isSending ? 'Отправляем...' : 'Отправить заявку');
+}
+
+function resetModalFormState() {
+  modalForm[0].reset();
+  modalForm.find('input[name="form_started_at"]').val(Math.floor(Date.now() / 1000));
+  refreshFormToken('booking', '#modal-form');
+  modalRoute.val('').removeClass('has-value').css('color', '#757575');
+  modalTime.empty().append('<option value="" disabled selected>Сначала выберите маршрут</option>');
+  modalTime.prop('disabled', true).removeClass('has-value').css('color', '#757575');
+  $('.modal__hint').removeClass('modal__hint--top modal__hint--completed');
+  setModalStatus('', '');
+  setModalSending(false);
+}
 
 $(document).on('click', (event) => {
   if ($(event.target).is($('.button--modal'))) {
@@ -150,11 +209,17 @@ $(document).on('click', (event) => {
 function modalClose(modal) {
   modal.fadeOut(600);
   $('html').css('overflow', 'auto');
+  setModalSending(false);
 }
 
 function modalOpen(modal) {
+  setModalStatus('', '');
+  refreshFormToken('booking', '#modal-form');
   modal.fadeIn(300);
   $('html').css('overflow', 'hidden');
+  setTimeout(function () {
+    $('#modal-name').trigger('focus');
+  }, 250);
 
   $('.modal__close').off('click').one('click', function () {
     modalClose(modal);
@@ -175,6 +240,8 @@ function modalOpen(modal) {
 }
 
 $(document).ready(function () {
+  modalTime.prop('disabled', true);
+
   new AirDatepicker('#modal-date', {
     minDate: new Date(),
     maxDate: new Date().setMonth((new Date()).getMonth() + 1),
@@ -187,18 +254,18 @@ $(document).ready(function () {
 
 
 $('#modal-route').on('change', function (event) {
-  console.log(event.target.value);
-
-  // Очищаем #modal-time и добавляем пустую опцию
-  $('#modal-time').empty().append('<option value="" disabled selected></option>');
+  modalTime.empty().append('<option value="" disabled selected>Выберите время</option>');
+  modalTime.prop('disabled', !event.target.value);
+  modalTime.removeClass('has-value').css('color', '#757575');
+  modalTime.siblings('.modal__hint').removeClass('modal__hint--top modal__hint--completed');
 
   if (event.target.value === 'Самара—Казань') {
-    $('#modal-time').append(`
+    modalTime.append(`
       <option value="7:00(Самара-Казань)">7:00 (Самара - Казань)</option>
       `);
     // <option value="14:00(Самара-Казань)">14:00 (Самара - Казань)</option>
   } else if (event.target.value === 'Казань—Самара') {
-    $('#modal-time').append(`
+    modalTime.append(`
       <option value="13:00(Казань-Самара)">13:00 (Казань - Самара)</option>
       `);
     // <option value="6:00(Казань-Самара)">6:00 (Казань - Самара)</option>
@@ -270,23 +337,28 @@ modalValidator
   ])
   .onSuccess(event => {
     event.preventDefault();
+    setModalStatus('', '');
+    setModalSending(true);
     $.ajax({
       url: './../php/modal-send.php',
       type: 'POST',
-      data: $('#modal-form').serialize(),
+      data: modalForm.serialize(),
       success: function () {
-        $('.modal__title').text('Спасибо! Заявка успешно отправлена!');
+        setModalStatus('success', 'Спасибо! Заявка успешно отправлена.');
 
         setTimeout(function () {
           modalClose($('.modal'));
-          $('#modal-form')[0].reset();
-          $('.modal__title').text('Заполнение анкеты');
-        }, 1000);
+          resetModalFormState();
+        }, 1400);
       },
-      error: function () {
-        $('.modal__title').text('Ошибка при отправке. Попробуйте снова.');
+      error: function (response) {
+        setModalStatus('error', response.responseText || 'Ошибка при отправке. Попробуйте снова.');
+        setModalSending(false);
       }
     });
+  })
+  .onFail(fields => {
+    focusFirstInvalidField(fields);
   });
 
 const burger = $('#burger');
@@ -327,7 +399,6 @@ function burgerOpen() {
 
   burgerMenu.on('click', (e) => {
     if ($(e.target).is($('.nav__link'))) {
-      console.log('sad');
       burgerClose();
     }
   });
@@ -364,8 +435,29 @@ function burgerClose() {
 }
 
 
+function loadScript(src) {
+  return new Promise(function (resolve, reject) {
+    if ($(`script[src="${src}"]`).length) {
+      resolve();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
 async function initMap() {
 
+  if (!document.getElementById('map-kazan') || !document.getElementById('map-samara')) {
+    return;
+  }
+
+  await loadScript('./js/ya-map.js');
   await ymaps3.ready;
 
   const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer } = ymaps3;
@@ -428,4 +520,30 @@ async function initMap() {
   mapSamara.addChild(new YMapDefaultSchemeLayer());
 }
 
-initMap();
+const scheduleSection = document.getElementById('schedule');
+let isMapInitialized = false;
+function initMapOnce() {
+  if (isMapInitialized) {
+    return;
+  }
+
+  isMapInitialized = true;
+  initMap().catch(function () {
+    isMapInitialized = false;
+  });
+}
+
+if (scheduleSection && 'IntersectionObserver' in window) {
+  const mapObserver = new IntersectionObserver(function (entries, observer) {
+    if (entries.some(entry => entry.isIntersecting)) {
+      observer.disconnect();
+      initMapOnce();
+    }
+  }, {
+    rootMargin: '300px 0px',
+  });
+
+  mapObserver.observe(scheduleSection);
+} else {
+  initMapOnce();
+}

@@ -4,7 +4,11 @@
   "description": "Описание",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp build"
+    "build": "gulp build",
+    "php:serve": "php -S localhost:8000 -t docs"
+  },
+  "engines": {
+    "node": "20.x || 22.x"
   },
   "type": "module",
   "repository": "",

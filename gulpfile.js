@@ -2,6 +2,9 @@
 
   // gulp
   import gulp from 'gulp';
+  import fs from 'node:fs';
+  import http from 'node:http';
+  import pathModule from 'node:path';
   import gulpif from 'gulp-if';
   import browserSync from 'browser-sync';
   import rename from 'gulp-rename';
@@ -22,7 +25,6 @@
   import autoprefixer from 'gulp-autoprefixer';
   import cleanCSS from 'gulp-clean-css';
   import gcmq from 'gulp-group-css-media-queries';
-  import { stream as critical } from 'critical';
 
   // js
   import terser from 'gulp-terser';
@@ -30,7 +32,6 @@
   import webpack from 'webpack';
 
   //img
-  import tinypng from 'gulp-tinypng-compress';
   import gulpImg from 'gulp-image';
   import gulpWebp from 'gulp-webp';
   import gulpAvif from 'gulp-avif';
@@ -69,9 +70,9 @@
         'src/libs/jquery-ui.min.js',
         'src/libs/just-validate.production.min.js',
         'src/libs/jquery.inputmask.min.js',
-        'src/libs/ya-map.js',
         'src/js/script.js',
       ],
+      mapApi: 'src/libs/ya-map.js',
       img: 'src/img/**/*.*',
       svg: 'src/svg/**/*.svg',
       imgF: 'src/img/**/*.{jpg,jpeg,png}',
@@ -92,6 +93,7 @@
       img: 'src/img/**/*.*',
       imgF: 'src/img/**/*.{jpg,jpeg,png}',
       php: 'src/php/**/*.php', // Добавляем в отслеживание PHP файлов
+      mapApi: 'src/libs/ya-map.js',
       other: [
         'src/manifest.webmanifest',
         'src/sitemap.xml',
@@ -280,14 +282,20 @@
       .pipe(gulp.dest(path.docs.js))
       .pipe(browserSync.stream());
 
+  export const mapApi = () =>
+    gulp
+      .src(path.src.mapApi)
+      .pipe(rename('ya-map.js'))
+      .pipe(gulp.dest(path.docs.js))
+      .pipe(
+        browserSync.stream({
+          once: true,
+        }),
+      );
+
   export const img = () =>
     gulp
       .src(path.src.img)
-      // .pipe(gulpif(!dev, tinypng({
-      // 	key: 'API_KEY',
-      // 	summarize: true,
-      // 	log: true
-      // })))
       .pipe(
         gulpif(
           !dev,
@@ -366,8 +374,10 @@
         }),
       );
 
-  export const critCSS = () =>
-    gulp
+  export const critCSS = async () => {
+    const { stream: critical } = await import('critical');
+
+    return gulp
       .src(path.src.html)
       .pipe(
         critical({
@@ -380,6 +390,7 @@
         console.error(err.message);
       })
       .pipe(gulp.dest(path.docs.base));
+  };
 
   export const copy = () =>
     gulp
@@ -393,27 +404,72 @@
         }),
       );
 
-  export const server = () => {
-    browserSync.init({
-      ui: false,
-      notify: false,
-      host: 'localhost',
-      port: 3001,
-      tunnel: true,
-      server: {
-        baseDir: 'docs',
-      },
+  const startFallbackServer = (port = 3001) => {
+    const mimeTypes = {
+      '.html': 'text/html; charset=utf-8',
+      '.css': 'text/css; charset=utf-8',
+      '.js': 'application/javascript; charset=utf-8',
+      '.json': 'application/json; charset=utf-8',
+      '.svg': 'image/svg+xml',
+      '.png': 'image/png',
+      '.jpg': 'image/jpeg',
+      '.jpeg': 'image/jpeg',
+      '.webp': 'image/webp',
+      '.avif': 'image/avif',
+      '.ico': 'image/x-icon',
+      '.woff': 'font/woff',
+      '.woff2': 'font/woff2',
+      '.ttf': 'font/ttf',
+    };
+
+    const server = http.createServer((request, response) => {
+      const requestUrl = new URL(request.url, `http://${request.headers.host}`);
+      const safePath = pathModule
+        .normalize(decodeURIComponent(requestUrl.pathname))
+        .replace(/^(\.\.[/\\])+/, '');
+      const filePath = pathModule.join(path.docs.base, safePath === '/' ? 'index.html' : safePath);
+
+      fs.readFile(filePath, (error, content) => {
+        if (error) {
+          response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+          response.end('Not found');
+          return;
+        }
+
+        response.writeHead(200, {
+          'Content-Type': mimeTypes[pathModule.extname(filePath)] || 'application/octet-stream',
+        });
+        response.end(content);
+      });
     });
 
+    server.listen(port, '127.0.0.1', () => {
+      console.log(`Fallback static server: http://127.0.0.1:${port}`);
+    });
+
+    server.on('error', (error) => {
+      if (error.code === 'EADDRINUSE') {
+        startFallbackServer(port + 1);
+        return;
+      }
+
+      console.warn(`Fallback static server failed: ${error.message}`);
+    });
+  };
+
+  export const server = (done) => {
+    startFallbackServer();
     gulp.watch(path.watch.html, html);
     // gulp.watch(path.watch.pug, pug);
     gulp.watch(path.watch.css, scss);
     gulp.watch(path.watch.js, js);
+    gulp.watch(path.watch.mapApi, mapApi);
     gulp.watch(path.watch.svg, svg);
     gulp.watch(path.watch.img, img);
     gulp.watch(path.watch.imgF, webp);
     gulp.watch(path.watch.imgF, avif);
     gulp.watch(path.watch.php, php); // Добавляем вотчинг для PHP
+    done();
   };
 
 
@@ -432,7 +488,7 @@
   // export const base = gulp.parallel(html, scss, critjs, js, img, svg, webp, avif, copy);
   // export const base = gulp.parallel(html, scss, js, img, svg, webp, avif, copy);
   // export const base = gulp.parallel(html, scss, js, img, svg, webp, avif, php, copy); // Добавляем php
-  export const base = gulp.parallel(html, scss, js, img, svg, webp, avif, php, copy, other);
+  export const base = gulp.parallel(html, scss, js, mapApi, img, svg, webp, avif, php, copy, other);
 
 
   export const build = gulp.series(clear, base, critCSS);

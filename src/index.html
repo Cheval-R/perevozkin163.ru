@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Комфортные и надежные пассажирские поездки Самара-Казань-Самара. Комфортные и надежные пассажирские поездки Самара-Казань-Самара. Забронируйте билет онлайн за пару минут и наслаждайтесь поездкой без стресса! Современные минивэны, вежливые и опытные водители, удобное расписание и доступные цены. Мы гарантируем безопасность, комфортные условия и своевременные рейсы, чтобы каждая поездка оставляла только положительные впечатления. Путешествуйте с нами легко и без забот! Купить билет Самара - Казань - Самара.">
+  <meta name="description" content="Ежедневные пассажирские поездки Самара — Казань — Самара на комфортных минивэнах. Онлайн-заявка, удобное расписание, опытные водители и перевозка посылок.">
   <meta name="robots" content="all">
   <link rel="icon" href="./img/favicons/favicon.ico">
   <link rel="apple-touch-icon" href="./img/favicons/apple-touch-icon.png">
@@ -310,6 +310,9 @@
                 <h3 class="feedback__title">
                   Оставьте свой отзыв
                 </h3>
+                <input type="hidden" name="company" value="">
+                <input type="hidden" name="form_started_at" value="">
+                <input type="hidden" name="csrf_token" value="">
                 <label class="feedback__label" for="feedback-name">
                   <input class="feedback__input" type="text" name="feedback-name" id="feedback-name" placeholder="Ваше имя">
                 </label>
@@ -352,17 +355,22 @@
     <!-- ! Добавить динамичные селекты, которые при выборе маршрута указывалось время для этого маршрута, а не все пункты -->
     <section class="modal" id="modal">
       <div class="modal__wrapper">
-        <div class="modal__content"><button class="modal__close" id="modal-close"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <div class="modal__content"><button class="modal__close" id="modal-close" type="button" aria-label="Закрыть форму"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7.99999 6.58578L14.2929 0.292893C14.6834 -0.0976313 15.3166 -0.0976307 15.7071 0.292894C16.0976 0.683418 16.0976 1.31658 15.7071 1.70711L9.41421 7.99999L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L7.99999 9.41421L1.70711 15.7071C1.31658 16.0976 0.683418 16.0976 0.292894 15.7071C-0.0976307 15.3166 -0.0976313 14.6834 0.292893 14.2929L6.58578 7.99999L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" />
             </svg></button>
-          <h2 class="modal__title">Заполнение анкеты</h2>
+          <h2 class="modal__title">Заявка на поездку</h2>
+          <p class="modal__subtitle">Заполните данные поездки, и мы свяжемся с вами для подтверждения.</p>
+          <p class="modal__status" id="modal-status" role="status" aria-live="polite"></p>
           <form class="modal__form" id="modal-form" method="post" action="./php/modal-send.php">
+            <input type="hidden" name="company" value="">
+            <input type="hidden" name="form_started_at" value="">
+            <input type="hidden" name="csrf_token" value="">
             <label class="modal__label">
-              <input class="modal__input" name="name" id="modal-name" type="text" placeholder="">
+              <input class="modal__input" name="name" id="modal-name" type="text" placeholder="" autocomplete="name">
               <span class="modal__hint">Имя</span>
             </label>
             <label class="modal__label">
-              <input class="modal__input" type="tel" name="phone" id="modal-phone" placeholder="">
+              <input class="modal__input" type="tel" name="phone" id="modal-phone" placeholder="" autocomplete="tel">
               <span class="modal__hint">
                 Телефон
               </span>
@@ -375,23 +383,22 @@
             </label>
             <label class="modal__label modal__label--select">
               <select class="modal__select" name="route" id="modal-route">
+                <option value="" disabled selected>Выберите маршрут</option>
                 <option value="Самара—Казань">Самара — Казань</option>
                 <option value="Казань—Самара">Казань — Самара</option>
               </select>
-              <span class="modal__hint">Маршрут</span>
             </label>
             <label class="modal__label modal__label--select">
 
               <select class="modal__select" name="time" id="modal-time">
-                <option value="" disabled>Выберите маршрут</option>
+                <option value="" disabled selected>Сначала выберите маршрут</option>
                 <!-- <option value="6:00(Казань-Самара)">6:00 (Казань - Самара)</option> -->
                 <!--    <option value="7:00(Самара-Казань)">7:00 (Самара - Казань)</option>
                 <option value="13:00(Казань-Самара)">13:00 (Казань - Самара)</option>
                 <option value="14:00(Самара-Казань)">14:00 (Самара - Казань)</option> -->
               </select>
-              <span class="modal__hint">Время отправления</span>
             </label>
-            <button class="modal__button button button--small" type="submit" id="modal-button">Отправить</button>
+            <button class="modal__button button button--small" type="submit" id="modal-button">Отправить заявку</button>
           </form>
         </div>
       </div>
